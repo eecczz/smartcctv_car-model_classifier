@@ -1,0 +1,16 @@
+detector:
+  weights: yolo26s.pt
+  classes:
+    car: 2
+    truck: 7
+  conf: 0.25
+  iou: 0.7
+
+classifier:
+  weights: runs/vehicle_cls/yolo26s_cls/weights/best.pt
+  imgsz: 224
+
+output:
+  crops_dir: crops
+  annotated_dir: annotated
+  predictions_csv: predictions.csv
