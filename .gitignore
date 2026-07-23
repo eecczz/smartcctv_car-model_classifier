@@ -20,6 +20,7 @@ runs/
 
 # Model artifacts
 *.pt
+!models/vehicle-classifier-yolo26s-full27-2/weights/*.pt
 *.onnx
 *.engine
 *.torchscript
