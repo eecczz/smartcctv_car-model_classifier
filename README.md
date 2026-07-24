@@ -1,4 +1,4 @@
-# Smart CCTV Vehicle Type Classification
+# Smart CCTV Car-Model Classification
 
 지능형 CCTV 환경에서 차량을 탐지하고, 탐지된 차량 영역을 기반으로 세부 차종을 분류하는 실시간 관제용 AI 프로젝트입니다.
 
