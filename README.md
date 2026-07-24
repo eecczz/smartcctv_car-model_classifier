@@ -4,9 +4,9 @@
 
 이 프로젝트의 목표는 단순히 `car`/`truck`을 구분하는 것이 아니라, CCTV 프레임 안의 차량을 찾아낸 뒤 실제 관제 환경에서 필요한 **차종 단위의 식별 결과**를 제공하는 것입니다.
 
-![Scrapyard CCTV vehicle sample](assets/demo/scrapyard-cctv-vehicle-sample.png)
+![Scrapyard CCTV vehicle detection screen](assets/demo/scrapyard-cctv-vehicle-sample.png)
 
-위와 같은 폐차장 CCTV 화면에서 관심 차량을 탐지하고, 최종적으로는 bounding box 위에 `차종명 + confidence`를 함께 표시하는 것을 목표로 합니다. 현재 repository에는 차량 탐지, bbox crop, 차종 분류 모델, Colab 학습/검증 노트북이 포함되어 있습니다.
+위 이미지는 실제 폐차장 CCTV 화면에 차량 탐지 결과가 표시되는 현재 서비스 화면입니다. 현재는 차량 bounding box와 detector confidence가 보이는 단계이며, 최종적으로는 같은 bbox crop을 차종 분류기에 넣어 `차종명 + confidence`까지 함께 표시하는 것을 목표로 합니다.
 
 ## Project Summary
 
@@ -141,6 +141,23 @@ top-5 accuracy: 0.97743
 ```
 
 다만 이 수치는 학습 split 기준의 validation 결과이므로, 실제 서비스 성능은 CCTV 촬영 각도, 차량 파손 여부, 조명, 가림, bbox 품질에 따라 달라질 수 있습니다. 따라서 노트북에서는 별도로 실제 폐차장 CCTV 이미지에 가까운 샘플을 넣어 모델이 현장 이미지에서도 차종을 맞추는지 확인했습니다.
+
+Drive Colab notebook의 마지막 추론 셀에서 저장한 `full27_2_extra_cctv_predictions.csv` 기준, 수동 업로드한 CCTV 계열 테스트 이미지 10장에 대한 `full27-2` 모델 출력 예시는 아래와 같습니다. 이 셀은 정답 라벨을 따로 입력하지 않은 상태라 `unchecked`로 기록되어 있으며, 표는 모델이 실제로 반환한 top-1 예측과 confidence를 보여줍니다.
+
+| Test image | Predicted vehicle type | Confidence |
+| --- | --- | ---: |
+| User attachment.png | `rodius_rodius` | 0.6081 |
+| User attachment1.png | `grandeur_tg` | 0.9661 |
+| User attachment2.png | `carnival_r` | 0.5298 |
+| User attachment3.png | `korando_turismo` | 0.9054 |
+| User attachment4.png | `sm5_new` | 0.9882 |
+| User attachment5.png | `sonata_yf` | 1.0000 |
+| User attachment6.png | `k5_2th` | 0.9632 |
+| User attachment7.png | `sm5_new` | 0.9965 |
+| 스크린샷 2026-07-23 135105.png | `cruze_cruze` | 0.6656 |
+| 스크린샷 2026-07-23 135358.png | `spark_spark` | 0.9999 |
+
+이 결과는 웹에서 가져온 보정 차량 이미지보다 실제 CCTV/폐차장 계열 이미지에서 모델 출력이 더 안정적으로 나오는지를 확인하기 위한 진단용 결과입니다. 특히 confidence가 높은 샘플은 현재 학습 데이터의 촬영 도메인과 테스트 이미지 도메인이 가까울 때 분류기가 꽤 강하게 반응한다는 근거로 볼 수 있습니다.
 
 ## Demo Direction
 
