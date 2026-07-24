@@ -142,7 +142,7 @@ top-5 accuracy: 0.97743
 
 다만 이 수치는 학습 split 기준의 validation 결과이므로, 실제 서비스 성능은 CCTV 촬영 각도, 차량 파손 여부, 조명, 가림, bbox 품질에 따라 달라질 수 있습니다. 따라서 노트북에서는 별도로 실제 폐차장 CCTV 이미지에 가까운 샘플을 넣어 모델이 현장 이미지에서도 차종을 맞추는지 확인했습니다.
 
-Drive Colab notebook의 마지막 추론 셀에서 저장한 `full27_2_extra_cctv_predictions.csv` 기준, 수동 업로드한 CCTV 계열 테스트 이미지 10장에 대한 `full27-2` 모델 출력 예시는 아래와 같습니다. 이 셀은 정답 라벨을 따로 입력하지 않은 상태라 `unchecked`로 기록되어 있으며, 표는 모델이 실제로 반환한 top-1 예측과 confidence를 보여줍니다.
+Drive Colab notebook의 마지막 추론 셀 출력 결과입니다. 수동 업로드한 CCTV 계열 테스트 이미지 10장에 대해 `full27-2` 모델이 반환한 **테스트이미지-예측값 10쌍**과 confidence를 README에도 그대로 요약했습니다. 이 셀은 정답 라벨을 따로 입력하지 않은 상태라 `unchecked`로 기록되어 있으며, 아래 표는 모델이 실제로 반환한 top-1 예측입니다.
 
 | Test image | Predicted vehicle type | Confidence |
 | --- | --- | ---: |
