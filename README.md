@@ -17,7 +17,7 @@
 - **Classifier**: YOLO26s classification 기반 차종 분류기
 - **Final classifier**: `models/vehicle-classifier-yolo26s-full27-2/weights/best.pt`
 - **Training environment**: Google Colab T4 GPU
-- **Dataset source**: AIHub CCTV 기반 차량/교통정보 관련 원천 및 라벨링 데이터
+- **Dataset source**: AIHub [CCTV 기반 차량/교통정보 관련 원천 및 라벨링 데이터](https://aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71573)
 
 ## 핵심 기능
 
@@ -90,6 +90,8 @@ models/vehicle-classifier-yolo26s-full27-2/
 ## Dataset
 
 학습 데이터는 AIHub의 CCTV 기반 차량/교통정보 관련 원천 데이터와 라벨링 데이터를 기반으로 구성했습니다.
+
+- Dataset link: [AIHub CCTV 기반 차량/교통정보 관련 원천 및 라벨링 데이터](https://aihub.or.kr/aihubdata/data/view.do?currMenu=115&topMenu=100&aihubDataSe=data&dataSetSn=71573)
 
 라벨링 데이터의 bounding box와 차종명을 사용해 원천 이미지에서 차량 영역만 crop했고, YOLO classification 형식에 맞춰 아래 구조로 정리했습니다.
 
